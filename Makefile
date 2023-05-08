@@ -1,5 +1,7 @@
 DATA_DIR = /home/mhaksal/data
 
+dene= "127.0.0.1 mhaksal.42.fr"
+
 all: dir
 	docker-compose -f srcs/docker-compose.yml --env-file=srcs/.env up -d --build
 re: fclean dir
@@ -14,3 +16,4 @@ fclean: clean
 dir:
 	sudo mkdir -p ${DATA_DIR}/wp
 	sudo mkdir -p ${DATA_DIR}/db
+	echo ${dene}| sudo tee -a /etc/hosts
